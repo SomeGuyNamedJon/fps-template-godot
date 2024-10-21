@@ -1,0 +1,439 @@
+[gd_scene load_steps=9 format=3 uid="uid://bevfhrmrdds8m"]
+
+[ext_resource type="Shader" path="res://assets/shaders/debug.gdshader" id="1_hft7r"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pk4al"]
+size = Vector2(500, 500)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uueon"]
+render_priority = 0
+shader = ExtResource("1_hft7r")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/specular = 1.009
+shader_parameter/metallic = 0.865
+shader_parameter/roughness = 0.432
+shader_parameter/point_size = 0.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ffca2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uma2n"]
+render_priority = 0
+shader = ExtResource("1_hft7r")
+shader_parameter/albedo = Color(0.6, 0.6, 0.6, 1)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/point_size = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqdto"]
+render_priority = 0
+shader = ExtResource("1_hft7r")
+shader_parameter/albedo = Color(0.6, 0.6, 0.6, 1)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/point_size = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4spwi"]
+render_priority = 0
+shader = ExtResource("1_hft7r")
+shader_parameter/albedo = Color(0.6, 0.6, 0.6, 1)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/point_size = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpql"]
+render_priority = 0
+shader = ExtResource("1_hft7r")
+shader_parameter/albedo = Color(0.6, 0.6, 0.6, 1)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/point_size = null
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876333, -0.139793, 0.433254)
+mesh = SubResource("PlaneMesh_pk4al")
+surface_material_override/0 = SubResource("ShaderMaterial_uueon")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_ffca2")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="TestPiece" type="CSGCombiner3D" parent="CSGCombiner3D"]
+
+[node name="Hallway_Wall1" type="CSGBox3D" parent="CSGCombiner3D/TestPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0871582, 1.10205, -0.992477)
+size = Vector3(0.825684, 2.2041, 9.96707)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Hallway_Wall1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.58638, 0, 4.57156)
+size = Vector3(0.825684, 2.2041, 9.87653)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="Hallway_Wall2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71043, 1.10205, 0.382576)
+size = Vector3(0.825684, 2.2041, 12.7172)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Hallway_Wall2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.92737, 0, 5.94413)
+size = Vector3(0.825684, 2.2041, 12.5291)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/TestPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714, 1, -1.5)
+size = Vector3(1, 1.99908, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.692, -0.12435, 0)
+size = Vector3(1, 1.75235, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783037, -0.132362, 0)
+size = Vector3(1, 1.48763, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step3" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step/Step2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.739883, -0.0949125, 0)
+size = Vector3(1, 1.2978, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step4" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step/Step2/Step3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784362, -0.108413, 0)
+size = Vector3(1, 1.11136, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step5" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step/Step2/Step3/Step4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0766202, 0)
+size = Vector3(1, 1.00373, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step6" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step/Step2/Step3/Step4/Step5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.660182, -0.0522103, 0)
+size = Vector3(1, 1.08225, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step7" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step/Step2/Step3/Step4/Step5/Step6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5294, -0.0533575, 0)
+size = Vector3(1, 0.842936, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step8" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.646794, -0.090717, 0)
+size = Vector3(1, 0.594492, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step9" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7/Step8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.697187, -0.118664, 0)
+size = Vector3(1, 0.429934, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step10" type="CSGBox3D" parent="CSGCombiner3D/TestPiece/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7/Step8/Step9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.693558, -0.0811774, 0)
+size = Vector3(1, 0.267579, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/TestPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47028, 1.85934, -1.56433)
+size = Vector3(3.14685, 0.696777, 4.12866)
+material = SubResource("ShaderMaterial_4spwi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.47959, 1.85494, 4.9978)
+size = Vector3(3.09027, 0.705566, 4.12866)
+material = SubResource("ShaderMaterial_4spwi")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D/TestPiece"]
+transform = Transform3D(-1.55533e-07, 0, 3.76428, 0, 2.20257, 0, -3.55819, 0, -1.64542e-07, 7.40918, 0, 10.2884)
+polygon = PackedVector2Array(0, 0, 0, 0, 1, 1, 1, 0)
+material = SubResource("ShaderMaterial_5wpql")
+
+[node name="TestPiece2" type="CSGCombiner3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.5854, 0, 3.64327)
+
+[node name="Hallway_Wall1" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0871582, 1.10205, -0.992477)
+size = Vector3(0.825684, 2.2041, 9.96707)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Hallway_Wall1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.58638, 0, 4.57156)
+size = Vector3(0.825684, 2.2041, 9.87653)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="Hallway_Wall2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71043, 1.10205, 0.382576)
+size = Vector3(0.825684, 2.2041, 12.7172)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Hallway_Wall2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.92737, 0, 5.94413)
+size = Vector3(0.825684, 2.2041, 12.5291)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714, 1, -1.5)
+size = Vector3(1, 1.99908, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.692, -0.12435, 0)
+size = Vector3(1, 1.75235, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783037, -0.132362, 0)
+size = Vector3(1, 1.48763, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step3" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step/Step2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.739883, -0.0949125, 0)
+size = Vector3(1, 1.2978, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step4" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step/Step2/Step3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784362, -0.108413, 0)
+size = Vector3(1, 1.11136, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step5" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step/Step2/Step3/Step4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0766202, 0)
+size = Vector3(1, 1.00373, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step6" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step/Step2/Step3/Step4/Step5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.660182, -0.0522103, 0)
+size = Vector3(1, 1.08225, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step7" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step/Step2/Step3/Step4/Step5/Step6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5294, -0.0533575, 0)
+size = Vector3(1, 0.842936, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step8" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.646794, -0.090717, 0)
+size = Vector3(1, 0.594492, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step9" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7/Step8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.697187, -0.118664, 0)
+size = Vector3(1, 0.429934, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step10" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7/Step8/Step9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.693558, -0.0811774, 0)
+size = Vector3(1, 0.267579, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47028, 1.85934, -1.56433)
+size = Vector3(3.14685, 0.696777, 4.12866)
+material = SubResource("ShaderMaterial_4spwi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.47959, 1.85494, 4.9978)
+size = Vector3(3.09027, 0.705566, 4.12866)
+material = SubResource("ShaderMaterial_4spwi")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D/TestPiece2"]
+transform = Transform3D(-1.55533e-07, 0, 3.76428, 0, 2.20257, 0, -3.55819, 0, -1.64542e-07, 7.40918, 0, 10.2884)
+polygon = PackedVector2Array(0, 0, 0, 0, 1, 1, 1, 0)
+material = SubResource("ShaderMaterial_5wpql")
+
+[node name="TestPiece3" type="CSGCombiner3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.63221, 0, -21.2396)
+
+[node name="Hallway_Wall1" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0871582, 1.10205, -0.992477)
+size = Vector3(0.825684, 2.2041, 9.96707)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Hallway_Wall1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.58638, 0, 4.57156)
+size = Vector3(0.825684, 2.2041, 9.87653)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="Hallway_Wall2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71043, 1.10205, 0.382576)
+size = Vector3(0.825684, 2.2041, 12.7172)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Hallway_Wall2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.92737, 0, 5.94413)
+size = Vector3(0.825684, 2.2041, 12.5291)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714001, 1, -1.5)
+size = Vector3(1, 1.99908, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.692, -0.12435, 0)
+size = Vector3(1, 1.75235, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783037, -0.132362, 0)
+size = Vector3(1, 1.48763, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step3" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step/Step2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.739883, -0.0949125, 0)
+size = Vector3(1, 1.2978, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step4" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step/Step2/Step3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784362, -0.108413, 0)
+size = Vector3(1, 1.11136, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step5" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step/Step2/Step3/Step4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0766202, 0)
+size = Vector3(1, 1.00373, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step6" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step/Step2/Step3/Step4/Step5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.660182, -0.0522103, 0)
+size = Vector3(1, 1.08225, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step7" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step/Step2/Step3/Step4/Step5/Step6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5294, -0.0533575, 0)
+size = Vector3(1, 0.842936, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step8" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.646794, -0.090717, 0)
+size = Vector3(1, 0.594492, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step9" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7/Step8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.697187, -0.118664, 0)
+size = Vector3(1, 0.429934, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step10" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7/Step8/Step9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.693558, -0.0811774, 0)
+size = Vector3(1, 0.267579, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47028, 1.85934, -1.56433)
+size = Vector3(3.14685, 0.696777, 4.12866)
+material = SubResource("ShaderMaterial_4spwi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.47959, 1.85494, 4.9978)
+size = Vector3(3.09027, 0.705566, 4.12866)
+material = SubResource("ShaderMaterial_4spwi")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D/TestPiece3"]
+transform = Transform3D(-1.55533e-07, 0, 3.76428, 0, 2.20257, 0, -3.55819, 0, -1.64542e-07, 7.40918, 0, 10.2884)
+polygon = PackedVector2Array(0, 0, 0, 0, 1, 1, 1, 0)
+material = SubResource("ShaderMaterial_5wpql")
+
+[node name="TestPiece4" type="CSGCombiner3D" parent="CSGCombiner3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.209, 0, -17.4152)
+
+[node name="Hallway_Wall1" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0871582, 1.10205, -0.992477)
+size = Vector3(0.825684, 2.2041, 9.96707)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Hallway_Wall1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.58638, 0, 4.57156)
+size = Vector3(0.825684, 2.2041, 9.87653)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="Hallway_Wall2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71043, 1.10205, 0.382576)
+size = Vector3(0.825684, 2.2041, 12.7172)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Hallway_Wall2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.92737, 0, 5.94413)
+size = Vector3(0.825684, 2.2041, 12.5291)
+material = SubResource("ShaderMaterial_uma2n")
+
+[node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714001, 1, -1.5)
+size = Vector3(1, 1.99908, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.692, -0.12435, 0)
+size = Vector3(1, 1.75235, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783037, -0.132362, 0)
+size = Vector3(1, 1.48763, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step3" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step/Step2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.739883, -0.0949125, 0)
+size = Vector3(1, 1.2978, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step4" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step/Step2/Step3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784362, -0.108413, 0)
+size = Vector3(1, 1.11136, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step5" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step/Step2/Step3/Step4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0766202, 0)
+size = Vector3(1, 1.00373, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step6" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step/Step2/Step3/Step4/Step5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.660182, -0.0522103, 0)
+size = Vector3(1, 1.08225, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step7" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step/Step2/Step3/Step4/Step5/Step6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5294, -0.0533575, 0)
+size = Vector3(1, 0.842936, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step8" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.646794, -0.090717, 0)
+size = Vector3(1, 0.594492, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step9" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7/Step8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.697187, -0.118664, 0)
+size = Vector3(1, 0.429934, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="Step10" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4/Stairs/Step/Step2/Step3/Step4/Step5/Step6/Step7/Step8/Step9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.693558, -0.0811774, 0)
+size = Vector3(1, 0.267579, 4)
+material = SubResource("ShaderMaterial_mqdto")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47028, 1.85934, -1.56433)
+size = Vector3(3.14685, 0.696777, 4.12866)
+material = SubResource("ShaderMaterial_4spwi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/TestPiece4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.4796, 1.85494, 4.9978)
+size = Vector3(3.09027, 0.705566, 4.12866)
+material = SubResource("ShaderMaterial_4spwi")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D/TestPiece4"]
+transform = Transform3D(-1.55533e-07, 0, 3.76428, 0, 2.20257, 0, -3.55819, 0, -1.64542e-07, 7.40918, 0, 10.2884)
+polygon = PackedVector2Array(0, 0, 0, 0, 1, 1, 1, 0)
+material = SubResource("ShaderMaterial_5wpql")
