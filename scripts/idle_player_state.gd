@@ -21,7 +21,9 @@ func update(delta: float) -> void:
 	if Input.is_action_just_pressed("crouch") and player.is_on_floor():
 		transition.emit("CrouchingPlayerState")
 	
-	if player.velocity.length() > 0.0 and player.is_on_floor():
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+		transition.emit("JumpingPlayerState")
+	elif player.velocity.length() > 0.0 and player.is_on_floor():
 		if (from_sprint and player.toggle_sprint) or Input.is_action_pressed("sprint"):
 			transition.emit("SprintingPlayerState")
 		else:

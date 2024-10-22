@@ -8,7 +8,7 @@ class_name SlidingPlayerState extends PlayerMovementState
 
 @onready var shape_cast_3d: ShapeCast3D = $"../../ShapeCast3D"
 
-func enter(_previous_state: State) -> void:
+func enter(previous_state: State) -> void:
 	set_tilt(player.rotation.y)
 	animation_player.get_animation("slide").track_set_key_value(6, 0, player.velocity.length() + SPEED)
 	animation_player.speed_scale = 1.0
@@ -17,6 +17,9 @@ func enter(_previous_state: State) -> void:
 func update(delta: float) -> void:
 	player.update_gravity(delta)
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
+	
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+		transition.emit("JumpingPlayerState")
 	
 func set_tilt(player_rotation: float) -> void:
 	var tilt = Vector3.ZERO

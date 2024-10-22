@@ -9,9 +9,9 @@ class_name CrouchingPlayerState extends PlayerMovementState
 
 func enter(previous_state: State) -> void:
 	animation_player.speed_scale = 1.0
-	if previous_state.name != "SlidingPlayerState":
+	if previous_state.name != "SlidingPlayerState" and previous_state.name != "JumpingPlayerState":
 		animation_player.play("crouch", -1.0, CROUCH_SPEED)
-	elif previous_state.name == "SlidingPlayerState":
+	elif previous_state.name == "SlidingPlayerState" or previous_state.name == "JumpingPlayerState":
 		animation_player.current_animation = "crouch"
 		animation_player.seek(1.0, true)
 		if player.always_uncrouch_out_of_slide:
@@ -23,6 +23,9 @@ func update(delta: float) -> void:
 	player.update_gravity(delta)
 	player.update_input()
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
+	
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+		transition.emit("JumpingPlayerState")
 	
 	if (Input.is_action_just_released("crouch") or not Input.is_action_pressed("crouch")) and !player.crouch_toggle:
 		uncrouch()

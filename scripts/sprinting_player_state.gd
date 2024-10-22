@@ -30,4 +30,7 @@ func update(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("crouch"):
 		transition.emit("SlidingPlayerState")
+		
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+		transition.emit("JumpingPlayerState")
 	
