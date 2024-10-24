@@ -5,7 +5,10 @@ class_name WalkingPlayerState extends PlayerMovementState
 @export var DECELERATION: float = 0.25
 @export var TOP_ANIM_SPEED: float = 2.2
 
-func enter(_previous_state: State) -> void:
+func enter(previous_state: State) -> void:
+	if previous_state.name == "JumpingPlayerState":
+		await animation_player.animation_finished
+		
 	animation_player.play("walking", -1.0, 1.0)
 	
 func exit() -> void:

@@ -13,9 +13,11 @@ func enter(previous_state: State) -> void:
 	if previous_state.name == "SlidingPlayerState":
 		next_state = default_state
 		animation_player.play("RESET")
+		await animation_player.animation_finished
 	else:
 		next_state = previous_state.name
-		animation_player.pause()
+	
+	animation_player.play("jump_start")
 		
 func exit() -> void:
 	double_jump = false
@@ -25,6 +27,7 @@ func update(delta: float) -> void:
 	player.update_velocity(entering_speed, ACCELERATION, DECELERATION)
 	
 	if player.is_on_floor():
+		animation_player.play("jump_end")
 		transition.emit(next_state) 
 	
 	if not double_jump and Input.is_action_just_pressed("jump"):

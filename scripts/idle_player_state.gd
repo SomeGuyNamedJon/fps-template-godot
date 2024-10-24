@@ -8,6 +8,8 @@ var from_sprint: bool
 func enter(previous_state: State) -> void:
 	if previous_state.name == "CrouchingPlayerState":
 		animation_player.play("RESET")
+	elif previous_state.name == "JumpingPlayerState":
+		await animation_player.animation_finished
 	else:
 		animation_player.pause()
 		

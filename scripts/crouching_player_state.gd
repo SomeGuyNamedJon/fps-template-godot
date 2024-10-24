@@ -12,12 +12,11 @@ func enter(previous_state: State) -> void:
 	if previous_state.name != "SlidingPlayerState" and previous_state.name != "JumpingPlayerState":
 		animation_player.play("crouch", -1.0, CROUCH_SPEED)
 	elif previous_state.name == "SlidingPlayerState" or previous_state.name == "JumpingPlayerState":
+		await animation_player.animation_finished
 		animation_player.current_animation = "crouch"
 		animation_player.seek(1.0, true)
 		if player.always_uncrouch_out_of_slide:
 			uncrouch(default_state)
-	else:
-		uncrouch(default_state) #failsafe option
 	
 func update(delta: float) -> void:
 	player.update_gravity(delta)
