@@ -9,7 +9,6 @@ var double_jump: bool = false
 func enter(previous_state: State) -> void:
 	player.velocity.y += JUMP_VELOCITY
 	entering_speed = player.velocity.length()
-	next_state = default_state 
 	
 	if previous_state.name == "SlidingPlayerState":
 		next_state = default_state
