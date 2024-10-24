@@ -30,3 +30,7 @@ func update(delta: float) -> void:
 	if not double_jump and Input.is_action_just_pressed("jump"):
 		player.velocity.y += JUMP_VELOCITY
 		double_jump = true
+		
+	if Input.is_action_just_released("jump"):
+		if player.velocity.y > 0:
+			player.velocity.y = player.velocity.y / 2
