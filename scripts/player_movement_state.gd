@@ -2,6 +2,7 @@ class_name PlayerMovementState extends State
 
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 var player: Player
+var default_state: String = "IdlePlayerState"
 
 func _ready() -> void:
 	await owner.ready

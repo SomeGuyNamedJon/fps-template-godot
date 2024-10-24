@@ -18,7 +18,7 @@ func update(delta: float) -> void:
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
 	
 	if player.velocity.length() == 0.0:
-		transition.emit("IdlePlayerState")
+		transition.emit(default_state)
 		
 	if Input.is_action_just_pressed("sprint") and player.is_on_floor():
 		transition.emit("SprintingPlayerState")

@@ -26,7 +26,7 @@ func update(delta: float) -> void:
 			transition.emit("WalkingPlayerState")
 			
 	if player.velocity.length() == 0:
-			transition.emit("IdlePlayerState")
+			transition.emit(default_state)
 		
 	if Input.is_action_just_pressed("crouch"):
 		transition.emit("SlidingPlayerState")

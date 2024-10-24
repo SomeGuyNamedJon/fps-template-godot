@@ -10,7 +10,7 @@ func enter(previous_state: State) -> void:
 	entering_speed = player.velocity.length() 
 	
 	if previous_state.name == "SlidingPlayerState":
-		next_state = "IdlePlayerState"
+		next_state = default_state
 		animation_player.play("RESET")
 	else:
 		next_state = previous_state.name
