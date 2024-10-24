@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://du27u68ehkvk5"]
+[gd_scene load_steps=28 format=3 uid="uid://du27u68ehkvk5"]
 
 [ext_resource type="Shader" path="res://assets/shaders/debug.gdshader" id="1_fc0od"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lnrel"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/crouching_player_state.gd" id="9_8sk64"]
 [ext_resource type="Script" path="res://scripts/sliding_player_state.gd" id="10_i4ube"]
 [ext_resource type="Script" path="res://scripts/jumping_player_state.gd" id="11_v05dj"]
+[ext_resource type="AudioStream" uid="uid://dwnwoipuxfx" path="res://assets/audio/footstep.mp3" id="12_n6qdo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qe6dd"]
 
@@ -132,6 +133,32 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_play_footstep"
+}]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PlayerAudio/footstep:stream")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_n6qdo")]
+}
 
 [sub_resource type="Animation" id="Animation_akgnb"]
 resource_name = "crouch"
@@ -170,6 +197,58 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0.5, 0), Vector3(0, 0.125, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u2po8"]
+resource_name = "jump_end"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraController/Camera3D:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.2, 0, 0.1, 0, -0.015, -0.0666667, 0.000347957, 0.2, 0, 0, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.1, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraController/Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.2, 0, 0.0333333, -0.000152979, -0.025, -0.0666667, -0.00146609, 0.2, 0, 0, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.1, 0.4)
+}
+
+[sub_resource type="Animation" id="Animation_ncbq8"]
+resource_name = "jump_start"
+length = 0.55
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraController/Camera3D:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.2, -0.000152979, -0.015, -0.1, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.533333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraController/Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, -0.000689981, -0.025, -0.1, 0, 0.1, 0.00229292, 0, -0.3, 0.000384023, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.533333)
 }
 
 [sub_resource type="Animation" id="Animation_7dx3k"]
@@ -287,6 +366,29 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.15, 0, 0.266667, 0.0110703, 0.15, -0.3, -0.0106326, 0.266667, -0.0106326, -0.15, -0.266667, 0.0108607, 0.266667, 0.0138143, 0.15, -0.233333, 0.00967934, 0.2, 0.01027, 0, -0.15, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 1, 1.6, 2)
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.966667, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_play_footstep"
+}, {
+"args": [],
+"method": &"_play_footstep"
+}, {
+"args": [],
+"method": &"_play_footstep"
+}, {
+"args": [],
+"method": &"_play_footstep"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_joqp2"]
 resource_name = "walking"
@@ -314,57 +416,37 @@ tracks/1/keys = {
 "points": PackedFloat32Array(-0.1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
 }
-
-[sub_resource type="Animation" id="Animation_ncbq8"]
-resource_name = "jump_start"
-length = 0.55
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/Camera3D:rotation:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.2, -0.000152979, -0.015, -0.1, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.533333)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_play_footstep"
+}, {
+"args": [],
+"method": &"_play_footstep"
+}, {
+"args": [],
+"method": &"_play_footstep"
+}]
 }
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/Camera3D:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.1, -0.000689981, -0.025, -0.1, 0, 0.1, 0.00229292, 0, -0.3, 0.000384023, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.533333)
-}
-
-[sub_resource type="Animation" id="Animation_u2po8"]
-resource_name = "jump_end"
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/Camera3D:rotation:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.2, 0, 0.1, 0, -0.015, -0.0666667, 0.000347957, 0.2, 0, 0, -0.2, 0, 0.2, 0),
-"times": PackedFloat32Array(0, 0.1, 0.4)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/Camera3D:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.2, 0, 0.0333333, -0.000152979, -0.025, -0.0666667, -0.00146609, 0.2, 0, 0, -0.2, 0, 0.2, 0),
-"times": PackedFloat32Array(0, 0.1, 0.4)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerAudio/footstep:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_n6qdo")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6tjy7"]
@@ -519,3 +601,12 @@ target_position = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277212, 0)
 shape = SubResource("CylinderShape3D_cr471")
 target_position = Vector3(0, 0, 0)
+
+[node name="PlayerAudio" type="Node3D" parent="."]
+
+[node name="footstep" type="AudioStreamPlayer3D" parent="PlayerAudio"]
+stream = ExtResource("12_n6qdo")
+volume_db = -10.175
+pitch_scale = 1.6
+max_distance = 1.0
+panning_strength = 0.16
