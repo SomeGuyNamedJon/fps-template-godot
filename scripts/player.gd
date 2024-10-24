@@ -11,6 +11,7 @@ class_name Player extends CharacterBody3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var stair_step: ShapeCast3D = $StairStep
 @onready var block_stairs: ShapeCast3D = $BlockStairs
+@onready var footstep: AudioStreamPlayer3D = $PlayerAudio/footstep
 
 const STAIR_JUMP: float = 2
 const STAIR_DECAY: float = 0.25
@@ -27,6 +28,10 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.player = self
 	stair_step.add_exception(self)
+
+func _play_footstep():
+	footstep.pitch_scale = randf_range(0.8, 1.2)
+	footstep.play()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
