@@ -6,10 +6,10 @@ class_name IdlePlayerState extends PlayerMovementState
 var from_sprint: bool
 
 func enter(previous_state: State) -> void:
-	if previous_state.name == "JumpingPlayerState":
+	if animation_player.is_playing() and animation_player.current_animation == "jump_end":
 		await animation_player.animation_finished
-	else:
-		animation_player.pause()
+	
+	animation_player.pause()
 		
 	from_sprint = previous_state.name == "SprintingPlayerState"
 
@@ -17,6 +17,9 @@ func update(delta: float) -> void:
 	player.update_gravity(delta)
 	player.update_input()
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
+	
+	if player.velocity.y < -3.0 and not player.is_on_floor():
+		transition.emit("FallingPlayerState")
 	
 	if Input.is_action_just_pressed("crouch") and player.is_on_floor():
 		transition.emit("CrouchingPlayerState")

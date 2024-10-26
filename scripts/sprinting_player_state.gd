@@ -6,7 +6,7 @@ class_name SprintingPlayerState extends PlayerMovementState
 @export var TOP_ANIM_SPEED: float = 1.6
 
 func enter(previous_state: State) -> void:
-	if previous_state.name == "JumpingPlayerState":
+	if animation_player.is_playing() and animation_player.current_animation == "jump_end":
 		await animation_player.animation_finished
 		
 	animation_player.play("sprint", -1.0, 1.0)
@@ -20,6 +20,9 @@ func update(delta: float) -> void:
 	player.update_gravity(delta)
 	player.update_input()
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
+	
+	if player.velocity.y < -3.0 and not player.is_on_floor():
+		transition.emit("FallingPlayerState")
 	
 	if player.toggle_sprint:
 		if Input.is_action_just_pressed("sprint"):

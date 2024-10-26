@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://du27u68ehkvk5"]
+[gd_scene load_steps=29 format=3 uid="uid://du27u68ehkvk5"]
 
 [ext_resource type="Shader" path="res://assets/shaders/debug.gdshader" id="1_fc0od"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lnrel"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/sliding_player_state.gd" id="10_i4ube"]
 [ext_resource type="Script" path="res://scripts/jumping_player_state.gd" id="11_v05dj"]
 [ext_resource type="AudioStream" uid="uid://dwnwoipuxfx" path="res://assets/audio/footstep.mp3" id="12_n6qdo"]
+[ext_resource type="Script" path="res://scripts/falling_player_state.gd" id="13_pnnh7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qe6dd"]
 
@@ -591,6 +592,9 @@ script = ExtResource("10_i4ube")
 
 [node name="JumpingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("11_v05dj")
+
+[node name="FallingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("13_pnnh7")
 
 [node name="StairStep" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
