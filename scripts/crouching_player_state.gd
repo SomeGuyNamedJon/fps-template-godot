@@ -32,11 +32,12 @@ func update(delta: float) -> void:
 	if Input.is_action_just_pressed("sprint") and player.is_on_floor():
 		uncrouch("SprintingPlayerState")
 	
-	if (Input.is_action_just_released("crouch") or not Input.is_action_pressed("crouch")) and !player.crouch_toggle:
-		uncrouch(default_state)
-			
-	if Input.is_action_just_pressed("crouch") and player.crouch_toggle:
-		uncrouch(default_state)
+	if (Input.is_action_just_released("crouch") or not Input.is_action_pressed("crouch")) and !player.crouch_toggle \
+		or Input.is_action_just_pressed("crouch") and player.crouch_toggle:
+		if player.velocity.length() == 0:
+			uncrouch(default_state)
+		else:
+			uncrouch("WalkingPlayerState")
 		
 func uncrouch(next_state: String) -> void:
 	if not shape_cast_3d.is_colliding() and (not Input.is_action_pressed("crouch") or player.crouch_toggle):

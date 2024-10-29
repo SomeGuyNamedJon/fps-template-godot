@@ -36,3 +36,4 @@ func update(delta: float) -> void:
 	
 func exit() -> void:
 	double_jump = false
+	is_crouched = false

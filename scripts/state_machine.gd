@@ -27,6 +27,7 @@ func on_child_transition(new_state_name: StringName) -> void:
 	if new_state != null:
 		if new_state != CURRENT_STATE:
 			CURRENT_STATE.exit()
+			#print("Entering ", new_state.name, " from ", CURRENT_STATE.name)
 			new_state.enter(CURRENT_STATE)
 			CURRENT_STATE = new_state
 	else:

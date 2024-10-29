@@ -10,7 +10,7 @@ func enter(previous_state: State) -> void:
 		await animation_player.animation_finished
 	
 	animation_player.pause()
-		
+	
 	from_sprint = previous_state.name == "SprintingPlayerState"
 
 func update(delta: float) -> void:

@@ -42,6 +42,7 @@ func _input(event: InputEvent) -> void:
 	
 func _physics_process(delta: float) -> void:
 	update_camera(delta)
+	Global.debug.add_property("ANIMATION", animation_player.current_animation)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
