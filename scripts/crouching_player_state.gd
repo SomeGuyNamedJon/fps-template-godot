@@ -23,6 +23,12 @@ func update(delta: float) -> void:
 	player.update_input()
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
 	
+	if animation_player.current_animation != "crouch":
+		if player.velocity.length() > 0:
+			animation_player.play("walking", -1.0, 1.0)
+		else:
+			animation_player.pause()
+	
 	if player.velocity.y < -3.0 and not player.is_on_floor():
 		transition.emit("FallingPlayerState")
 	
