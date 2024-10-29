@@ -6,6 +6,9 @@ class_name SprintingPlayerState extends PlayerMovementState
 @export var TOP_ANIM_SPEED: float = 1.6
 
 func enter(previous_state: State) -> void:
+	if previous_state.name == "CrouchingPlayerState":
+		animation_player.play("RESET")
+		await animation_player.animation_finished
 	if animation_player.is_playing() and animation_player.current_animation == "jump_end":
 		await animation_player.animation_finished
 		
