@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dacclfbs43wp8"]
+
+[ext_resource type="ArrayMesh" uid="uid://dbhdodl2v3yml" path="res://assets/models/crowbar.res" id="1_7jxj4"]
+
+[node name="Weapon" type="Node3D"]
+
+[node name="WeaponMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("1_7jxj4")
+
+[node name="ShadowMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+cast_shadow = 3
+mesh = ExtResource("1_7jxj4")
