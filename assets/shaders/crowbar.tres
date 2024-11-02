@@ -1,8 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c3f3dwrpk2p7r"]
 
-[ext_resource type="Texture2D" uid="uid://c1tjwedjxk17c" path="res://assets/models/crowbar_0.png" id="1_j5erx"]
-[ext_resource type="Texture2D" uid="uid://b2sj15xfuivaj" path="res://assets/models/crowbar_1.png" id="2_5fcy1"]
-[ext_resource type="Texture2D" uid="uid://cn5yih8n7qilf" path="res://assets/models/crowbar_2.png" id="3_ymuro"]
+[ext_resource type="Texture2D" uid="uid://c1tjwedjxk17c" path="res://assets/weapons/crowbar/crowbar_0.png" id="1_lnt35"]
+[ext_resource type="Texture2D" uid="uid://b2sj15xfuivaj" path="res://assets/weapons/crowbar/crowbar_1.png" id="2_cki7i"]
+[ext_resource type="Texture2D" uid="uid://cn5yih8n7qilf" path="res://assets/weapons/crowbar/crowbar_2.png" id="3_xtouv"]
 
 [sub_resource type="Shader" id="Shader_p0p2b"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
@@ -37,11 +37,11 @@ uniform float fov = 77;
 
 void vertex() {
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
-	
+
 	float scale = 1.0 / tan(fov * 0.5 * PI / 180.0);
 	PROJECTION_MATRIX[0][0] = scale / (VIEWPORT_SIZE.x / VIEWPORT_SIZE.y);
 	PROJECTION_MATRIX[1][1] = -scale;
-	
+
 	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
 	POSITION.z = mix(POSITION.z, 0, -0.99);
 }
@@ -88,8 +88,8 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/fov = 77.0
-shader_parameter/texture_albedo = ExtResource("1_j5erx")
-shader_parameter/texture_metallic = ExtResource("2_5fcy1")
-shader_parameter/texture_roughness = ExtResource("2_5fcy1")
-shader_parameter/texture_normal = ExtResource("3_ymuro")
-shader_parameter/texture_ambient_occlusion = ExtResource("2_5fcy1")
+shader_parameter/texture_albedo = ExtResource("1_lnt35")
+shader_parameter/texture_metallic = ExtResource("2_cki7i")
+shader_parameter/texture_roughness = ExtResource("2_cki7i")
+shader_parameter/texture_normal = ExtResource("3_xtouv")
+shader_parameter/texture_ambient_occlusion = ExtResource("2_cki7i")

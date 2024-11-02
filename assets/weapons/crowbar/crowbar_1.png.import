@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1tjwedjxk17c"
-path.s3tc="res://.godot/imported/crowbar_0.png-a9a7f1c8b0227bd27bf12c4f45eff4b8.s3tc.ctex"
+uid="uid://b2sj15xfuivaj"
+path.s3tc="res://.godot/imported/crowbar_1.png-512b68ec997147de04a7c337b1d2a453.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "09ffd9afdda1f73227d2adc5b19bca63"
+"md5": "bb4db6d2c76e85900c571c91650a4779"
 }
 
 [deps]
 
-source_file="res://assets/models/crowbar_0.png"
-dest_files=["res://.godot/imported/crowbar_0.png-a9a7f1c8b0227bd27bf12c4f45eff4b8.s3tc.ctex"]
+source_file="res://assets/weapons/crowbar/crowbar_1.png"
+dest_files=["res://.godot/imported/crowbar_1.png-512b68ec997147de04a7c337b1d2a453.s3tc.ctex"]
 
 [params]
 
@@ -27,8 +27,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=8
+roughness/src_normal="res://assets/models/crowbar_2.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

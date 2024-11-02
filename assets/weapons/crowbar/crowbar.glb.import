@@ -3,18 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ch7hy4de48c0p"
-path="res://.godot/imported/foamBulletA.glb-4e3c732530dbd78ca98e81cde251e3f7.scn"
+uid="uid://dcopert161x35"
+valid=false
 
 [deps]
 
-source_file="res://assets/models/guns/foamBulletA.glb"
-dest_files=["res://.godot/imported/foamBulletA.glb-4e3c732530dbd78ca98e81cde251e3f7.scn"]
+source_file="res://assets/weapons/crowbar/crowbar.glb"
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -31,6 +30,18 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
-gltf/naming_version=0
+_subresources={
+"meshes": {
+"Sketchfab_Scene_Crowbar_crowbar_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/crowbar.res"
+}
+}
+}
+gltf/naming_version=1
 gltf/embedded_image_handling=1
