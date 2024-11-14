@@ -18,6 +18,8 @@ func update(delta: float) -> void:
 	player.update_input()
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
 	
+	weapon.sway_weapon(delta, true)
+	
 	if player.velocity.y < -3.0 and not player.is_on_floor():
 		transition.emit("FallingPlayerState")
 	

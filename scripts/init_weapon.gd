@@ -1,6 +1,6 @@
 @tool
 
-extends Node3D
+class_name WeaponController extends Node3D
 
 @export var WEAPON_TYPE: Weapons:
 	set(value):
@@ -36,9 +36,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_movement = event.relative
 	
-func _physics_process(delta: float) -> void:
-	sway_weapon(delta)
-	
 func load_weapon() -> void:
 	weapon_mesh.mesh = WEAPON_TYPE.mesh
 	shadow_mesh.mesh = WEAPON_TYPE.mesh
@@ -47,18 +44,21 @@ func load_weapon() -> void:
 	scale = WEAPON_TYPE.scale
 	shadow_mesh.visible = WEAPON_TYPE.shadow
 	
-func sway_weapon(delta: float) -> void:
-	### Random sway
-	var sway_random: float = get_sway_noise()
-	var sway_random_adjusted: float = sway_random * WEAPON_TYPE.idle_sway_adjustment
-	# update time using delta and prepare our two random sway values using sine waves
-	time += delta * (sway_speed + sway_random)
-	random_sway.x = sin(time * 1.5 + sway_random_adjusted) / WEAPON_TYPE.random_sway_amount
-	random_sway.y = sin(time - sway_random_adjusted) / WEAPON_TYPE.random_sway_amount
-	
+func sway_weapon(delta: float, isIdle: bool) -> void:
 	### Mouse movement sway
 	# clamp mouse movement
 	mouse_movement = mouse_movement.clamp(WEAPON_TYPE.sway_min, WEAPON_TYPE.sway_max)
+	
+	if isIdle:
+		### Random sway
+		var sway_random: float = get_sway_noise()
+		var sway_random_adjusted: float = sway_random * WEAPON_TYPE.idle_sway_adjustment
+		# update time using delta and prepare our two random sway values using sine waves
+		time += delta * (sway_speed + sway_random)
+		random_sway.x = sin(time * 1.5 + sway_random_adjusted) / WEAPON_TYPE.random_sway_amount
+		random_sway.y = sin(time - sway_random_adjusted) / WEAPON_TYPE.random_sway_amount
+	else:
+		random_sway = Vector2.ZERO
 	
 	### Apply sway to weapon
 	# adjust weapon position using lerp

@@ -521,13 +521,13 @@ current = true
 [node name="WeaponRig" type="Node3D" parent="CameraController/Camera3D"]
 
 [node name="Weapon" parent="CameraController/Camera3D/WeaponRig" instance=ExtResource("3_mrnnw")]
+unique_name_in_owner = true
 transform = Transform3D(0.00347296, -0.0196962, 0, 0.00673648, 0.00118782, 0.0187939, -0.0185083, -0.00326352, 0.0068404, 0.5, -0.75, -0.6)
 WEAPON_TYPE = ExtResource("4_2vylr")
 sway_noise = SubResource("NoiseTexture2D_cpjur")
-sway_speed = null
-reset = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_6tjy7")
 }

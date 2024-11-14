@@ -23,6 +23,8 @@ func update(delta: float) -> void:
 	player.update_input()
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
 	
+	weapon.sway_weapon(delta, false)
+	
 	if player.velocity.length() == 0.0:
 		transition.emit(default_state)
 		

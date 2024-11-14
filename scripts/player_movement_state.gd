@@ -1,6 +1,7 @@
 class_name PlayerMovementState extends State
 
-@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
+@onready var weapon: WeaponController = %Weapon
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 var player: Player
 var default_state: String = "IdlePlayerState"
 

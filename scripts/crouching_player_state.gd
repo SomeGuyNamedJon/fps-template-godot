@@ -23,6 +23,8 @@ func update(delta: float) -> void:
 	player.update_input()
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
 	
+	weapon.sway_weapon(delta, false)
+	
 	if animation_player.current_animation != "crouch":
 		if player.velocity.length() > 0:
 			animation_player.play("walking", -1.0, 1.0)
