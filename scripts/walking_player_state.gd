@@ -4,6 +4,9 @@ class_name WalkingPlayerState extends PlayerMovementState
 @export var ACCELERATION: float = 0.1
 @export var DECELERATION: float = 0.25
 @export var TOP_ANIM_SPEED: float = 2.2
+@export var WEAPON_BOB_SPEED: float = 6.0
+@export var WEAPON_HBOB: float = 2.5
+@export var WEAPON_VBOB: float = 2.0
 
 func enter(previous_state: State) -> void:
 	if previous_state.name == "CrouchingPlayerState":
@@ -24,6 +27,7 @@ func update(delta: float) -> void:
 	player.update_velocity(SPEED, ACCELERATION, DECELERATION)
 	
 	weapon.sway_weapon(delta, false)
+	weapon.weapon_bob(delta, WEAPON_BOB_SPEED, WEAPON_HBOB, WEAPON_VBOB)
 	
 	if player.velocity.length() == 0.0:
 		transition.emit(default_state)

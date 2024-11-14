@@ -4,6 +4,9 @@ class_name CrouchingPlayerState extends PlayerMovementState
 @export var ACCELERATION: float = 0.1
 @export var DECELERATION: float = 0.25
 @export_range(1, 6, 0.1) var CROUCH_SPEED: float = 4.0
+@export var WEAPON_BOB_SPEED: float = 4.0
+@export var WEAPON_HBOB: float = 2.0
+@export var WEAPON_VBOB: float = 2.0
 
 @onready var shape_cast_3d: ShapeCast3D = $"../../ShapeCast3D"
 
@@ -28,6 +31,7 @@ func update(delta: float) -> void:
 	if animation_player.current_animation != "crouch":
 		if player.velocity.length() > 0:
 			animation_player.play("walking", -1.0, 1.0)
+			weapon.weapon_bob(delta, WEAPON_BOB_SPEED, WEAPON_HBOB, WEAPON_VBOB)
 		else:
 			animation_player.pause()
 	
