@@ -18,11 +18,14 @@ class_name WeaponController extends Node3D
 
 @onready var weapon_mesh: MeshInstance3D = %WeaponMesh
 @onready var shadow_mesh: MeshInstance3D = %ShadowMesh
+@onready var camera: Camera3D = %Camera3D
 
 var mouse_movement: Vector2
 var random_sway: Vector2
 var bob_amount: Vector2 = Vector2.ZERO
 var time: float = 0.0
+
+var raycast_test = preload("res://scenes/raycast_test.tscn")
 
 func _ready() -> void:
 	load_weapon()
@@ -81,3 +84,22 @@ func get_sway_noise() -> float:
 		player_position = Global.player.global_position
 	# return noise value based on player position
 	return sway_noise.noise.get_noise_2d(player_position.x, player_position.y)
+	
+func attack() -> void:
+	var space_state = camera.get_world_3d().direct_space_state
+	var screen_center = get_viewport().size / 2
+	var origin = camera.project_ray_origin(screen_center)
+	var end = origin + camera.project_ray_normal(screen_center) * 1000
+	var query = PhysicsRayQueryParameters3D.create(origin, end)
+	query.collide_with_bodies = true
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		_test_raycast(result.get("position"))
+	
+func _test_raycast(position: Vector3) -> void:
+	var instance = raycast_test.instantiate()
+	get_tree().root.add_child(instance)
+	instance.global_position = position
+	await get_tree().create_timer(3).timeout
+	instance.queue_free()

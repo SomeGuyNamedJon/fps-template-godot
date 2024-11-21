@@ -501,7 +501,6 @@ radius = 0.525
 collision_layer = 2
 script = ExtResource("1_lnrel")
 toggle_sprint = false
-always_uncrouch_out_of_slide = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_qe6dd")
@@ -516,6 +515,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_xu4rd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
+unique_name_in_owner = true
 current = true
 
 [node name="WeaponRig" type="Node3D" parent="CameraController/Camera3D"]

@@ -12,6 +12,7 @@ class_name Player extends CharacterBody3D
 @onready var stair_step: ShapeCast3D = $StairStep
 @onready var block_stairs: ShapeCast3D = $BlockStairs
 @onready var footstep: AudioStreamPlayer3D = $PlayerAudio/footstep
+@onready var weapon: WeaponController = %Weapon
 
 const STAIR_JUMP: float = 2
 const STAIR_DECAY: float = 0.25
@@ -39,6 +40,10 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("attack"):
+		weapon.attack()
 	
 func _physics_process(delta: float) -> void:
 	update_camera(delta)
