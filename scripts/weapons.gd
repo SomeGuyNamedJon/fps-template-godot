@@ -6,7 +6,7 @@ class_name Weapons extends Resource
 @export var rotation: Vector3
 @export_category("Visual Settings")
 @export var mesh: Mesh
-@export var scale: Vector3
+@export var scale: Vector3 = Vector3.ONE
 @export var shadow: bool
 @export_category("Weapon Sway")
 @export var sway_min: Vector2 = Vector2(-20.0, -20.0)
