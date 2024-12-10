@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bevfhrmrdds8m"]
+[gd_scene load_steps=11 format=3 uid="uid://bevfhrmrdds8m"]
 
 [ext_resource type="Shader" path="res://assets/shaders/debug.gdshader" id="1_hft7r"]
 
@@ -44,6 +44,19 @@ shader_parameter/roughness = 0.5
 shader_parameter/point_size = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpql"]
+render_priority = 0
+shader = ExtResource("1_hft7r")
+shader_parameter/albedo = Color(0.6, 0.6, 0.6, 1)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/point_size = null
+
+[sub_resource type="SphereMesh" id="SphereMesh_oamps"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl5bu"]
 render_priority = 0
 shader = ExtResource("1_hft7r")
 shader_parameter/albedo = Color(0.6, 0.6, 0.6, 1)
@@ -437,3 +450,8 @@ material = SubResource("ShaderMaterial_4spwi")
 transform = Transform3D(-1.55533e-07, 0, 3.76428, 0, 2.20257, 0, -3.55819, 0, -1.64542e-07, 7.40918, 0, 10.2884)
 polygon = PackedVector2Array(0, 0, 0, 0, 1, 1, 1, 0)
 material = SubResource("ShaderMaterial_5wpql")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.15929, -9)
+mesh = SubResource("SphereMesh_oamps")
+material = SubResource("ShaderMaterial_cl5bu")

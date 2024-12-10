@@ -25,7 +25,7 @@ var random_sway: Vector2
 var bob_amount: Vector2 = Vector2.ZERO
 var time: float = 0.0
 
-var raycast_test = preload("res://scenes/raycast_test.tscn")
+var bullet_hole = preload("res://scenes/bullet_hole.tscn")
 
 func _ready() -> void:
 	load_weapon()
@@ -95,11 +95,21 @@ func attack() -> void:
 	var result = space_state.intersect_ray(query)
 	
 	if result:
-		_test_raycast(result.get("position"))
+		spawn_decal(result.get("position"), result.get("normal"))
 	
-func _test_raycast(position: Vector3) -> void:
-	var instance = raycast_test.instantiate()
+func spawn_decal(position: Vector3, normal: Vector3) -> void:
+	var instance = bullet_hole.instantiate()
+	var fade = get_tree().create_tween()
+	
+	# spawn decal
 	get_tree().root.add_child(instance)
 	instance.global_position = position
-	await get_tree().create_timer(3).timeout
+	instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
+	if normal != Vector3.UP and normal != Vector3.DOWN:
+		instance.rotate_object_local(Vector3(1,0,0), 90)
+	
+	# fade decal
+	await get_tree().create_timer(2).timeout
+	fade.tween_property(instance, "modulate:a", 0, 1.5)
+	await get_tree().create_timer(1.5).timeout
 	instance.queue_free()
