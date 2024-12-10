@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://du27u68ehkvk5"]
+[gd_scene load_steps=35 format=3 uid="uid://du27u68ehkvk5"]
 
 [ext_resource type="Shader" path="res://assets/shaders/debug.gdshader" id="1_fc0od"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lnrel"]
+[ext_resource type="Script" path="res://scripts/recoil.gd" id="3_41rdo"]
 [ext_resource type="PackedScene" uid="uid://dacclfbs43wp8" path="res://scenes/weapon.tscn" id="3_mrnnw"]
 [ext_resource type="Script" path="res://scripts/reticle.gd" id="3_yybb1"]
 [ext_resource type="Script" path="res://scripts/debug_panel.gd" id="4_do2i3"]
@@ -79,7 +80,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CameraController/Camera3D:position:x")
+tracks/3/path = NodePath("CameraController/Recoil/Camera3D:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -90,7 +91,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CameraController/Camera3D:position:y")
+tracks/4/path = NodePath("CameraController/Recoil/Camera3D:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -101,7 +102,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CameraController/Camera3D:position")
+tracks/5/path = NodePath("CameraController/Recoil/Camera3D:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -113,7 +114,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CameraController/Camera3D:fov")
+tracks/6/path = NodePath("CameraController/Recoil/Camera3D:fov")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -125,7 +126,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CameraController/Camera3D:rotation:x")
+tracks/7/path = NodePath("CameraController/Recoil/Camera3D:rotation:x")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -136,7 +137,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CameraController/Camera3D:rotation")
+tracks/8/path = NodePath("CameraController/Recoil/Camera3D:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -217,7 +218,7 @@ length = 0.4
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/Camera3D:rotation:x")
+tracks/0/path = NodePath("CameraController/Recoil/Camera3D:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -228,7 +229,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/Camera3D:position:y")
+tracks/1/path = NodePath("CameraController/Recoil/Camera3D:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -243,7 +244,7 @@ length = 0.55
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/Camera3D:rotation:x")
+tracks/0/path = NodePath("CameraController/Recoil/Camera3D:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -254,7 +255,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/Camera3D:position:y")
+tracks/1/path = NodePath("CameraController/Recoil/Camera3D:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -292,7 +293,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CameraController/Camera3D:position")
+tracks/2/path = NodePath("CameraController/Recoil/Camera3D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -304,7 +305,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CameraController/Camera3D:rotation")
+tracks/3/path = NodePath("CameraController/Recoil/Camera3D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -316,7 +317,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CameraController/Camera3D:fov")
+tracks/4/path = NodePath("CameraController/Recoil/Camera3D:fov")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -359,7 +360,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/Camera3D:position:x")
+tracks/0/path = NodePath("CameraController/Recoil/Camera3D:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -370,7 +371,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/Camera3D:position:y")
+tracks/1/path = NodePath("CameraController/Recoil/Camera3D:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -409,7 +410,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/Camera3D:position:x")
+tracks/0/path = NodePath("CameraController/Recoil/Camera3D:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -420,7 +421,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/Camera3D:position:y")
+tracks/1/path = NodePath("CameraController/Recoil/Camera3D:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -514,13 +515,19 @@ surface_material_override/0 = SubResource("ShaderMaterial_xu4rd")
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CameraController"]
+[node name="Recoil" type="Node3D" parent="CameraController"]
+script = ExtResource("3_41rdo")
+recoil_amount = Vector2(0.05, 0.025)
+snap_amount = 8.0
+speed = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/Recoil"]
 unique_name_in_owner = true
 current = true
 
-[node name="WeaponRig" type="Node3D" parent="CameraController/Camera3D"]
+[node name="WeaponRig" type="Node3D" parent="CameraController/Recoil/Camera3D"]
 
-[node name="Weapon" parent="CameraController/Camera3D/WeaponRig" instance=ExtResource("3_mrnnw")]
+[node name="Weapon" parent="CameraController/Recoil/Camera3D/WeaponRig" instance=ExtResource("3_mrnnw")]
 unique_name_in_owner = true
 transform = Transform3D(-8.74228e-10, 0, -0.02, 0, 0.02, 0, 0.02, 0, -8.74228e-10, 0.25, -0.2, -0.4)
 WEAPON_TYPE = ExtResource("4_yvr8m")
