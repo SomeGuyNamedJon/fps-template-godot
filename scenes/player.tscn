@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://assets/shaders/debug.gdshader" id="1_fc0od"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lnrel"]
-[ext_resource type="Script" path="res://scripts/recoil.gd" id="3_41rdo"]
+[ext_resource type="Script" path="res://scripts/camera_recoil.gd" id="3_41rdo"]
 [ext_resource type="PackedScene" uid="uid://dacclfbs43wp8" path="res://scenes/weapon.tscn" id="3_mrnnw"]
 [ext_resource type="Script" path="res://scripts/reticle.gd" id="3_yybb1"]
 [ext_resource type="Script" path="res://scripts/debug_panel.gd" id="4_do2i3"]
